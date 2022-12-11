@@ -20,9 +20,11 @@ GO
 CREATE TABLE SIJL.DATA
 (
     id INT IDENTITY(1,1) NOT NULL,
+    hash BINARY(64) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     email VARCHAR(254) NOT NULL,
     age smallint NOT NULL,
     CONSTRAINT [PK_User_UserID] PRIMARY KEY CLUSTERED (UserID ASC)
 )
+GO
