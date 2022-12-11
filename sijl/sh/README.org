@@ -1,0 +1,45 @@
+#+title: sh - Small scripts make life easier
+
+
+Before depending on any of the shell scripts:
+
+1. Make sure you are in the working directory of the repo you are using the script for and
+   *NOT* in the scripts submodule repo.
+
+   Consider the following:
+   #+begin_example
+├── cmd
+│   └── mamar.go
+├── Dockerfile
+├── go.mod
+├── go.sum
+├── LICENSE
+├── proto
+│   ├── port_grpc.pb.go
+│   └── port.pb.go
+├── protobufs
+│   ├── LICENSE
+│   ├── mamar
+│   │   └── port.proto
+│   └── README.org
+├── README.org
+├── sh
+│   ├── LICENSE
+│   ├── Makeimage.sh
+│   └── Protofile.sh
+└── testfile
+   #+end_example
+   Run the scripts from this place like this:
+   #+begin_example
+./sh/Makeimage.sh
+   #+end_example
+   Do not:
+   #+begin_src shell
+cd sh
+./Makeimage.sh
+   #+end_src
+
+2. Make all the scripts executable:
+   #+begin_src shell
+chmod +x sh/*
+   #+end_src

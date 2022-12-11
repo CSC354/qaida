@@ -24,6 +24,7 @@ CREATE TABLE SIJL.DATA
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     email VARCHAR(254) NOT NULL,
+    username VARCHAR(64) NOT NULL,
     age smallint NOT NULL,
     CONSTRAINT [PK_User_UserID] PRIMARY KEY CLUSTERED (UserID ASC)
 )
