@@ -1,6 +1,6 @@
 for i in {1..50};
 do
-    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P SQLPASSWORd1! -d master -i setup.sql
+    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P rBwiY3JgqmG26q@ -d master -i setup.sql
     if [ $? -eq 0 ]
     then
         echo "setup.sql completed"
