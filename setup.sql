@@ -29,6 +29,15 @@ CREATE TABLE SIJL.USERS (
 )
 GO
 
+ALTER TABLE SIJL.USERS ADD github VARCHAR(60) NULL;
+ALTER TABLE SIJL.USERS ADD home VARCHAR(300) NULL;
+ALTER TABLE SIJL.USERS ADD about VARCHAR(1500) NULL;
+ALTER TABLE SIJL.USERS ADD twitter VARCHAR(40) NULL;
+ALTER TABLE SIJL.USERS ADD date_joined DATE NOT NULL default '2022-12-13';
+
+
+
+
 
 -- INSERT INTO SIJL.USERS(hash, first_name, last_name, email,username,age) VALUES (HashBytes('SHA2_512', "Test" ), "Test" , "Test" , "Test" , "Test" , 31 )
 -- stmt, err := s.DB.Prepare(``)
