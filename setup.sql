@@ -17,15 +17,18 @@ GO
 CREATE SCHEMA SIJL AUTHORIZATION dbo;
 GO
 
-CREATE TABLE SIJL.USERS
-(
+CREATE TABLE SIJL.USERS (
     id INT IDENTITY(1,1) NOT NULL,
     hash BINARY(64) NOT NULL,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    email VARCHAR(254) NOT NULL,
-    username VARCHAR(64) NOT NULL,
+    email VARCHAR(254) NOT NULL UNIQUE,
+    username VARCHAR(64) NOT NULL UNIQUE,
     age smallint NOT NULL,
-    CONSTRAINT [PK_User_UserID] PRIMARY KEY CLUSTERED (UserID ASC)
+    CONSTRAINT [PK_User_UserID] PRIMARY KEY CLUSTERED (id ASC)
 )
 GO
+
+
+-- INSERT INTO SIJL.USERS(hash, first_name, last_name, email,username,age) VALUES (HashBytes('SHA2_512', "Test" ), "Test" , "Test" , "Test" , "Test" , 31 )
+-- stmt, err := s.DB.Prepare(``)
