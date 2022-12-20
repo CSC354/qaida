@@ -52,6 +52,73 @@ ALTER TABLE SIJL.USERS
 --     ADD avatar VARCHAR(10) NOT NULL DEFAULT 'empty';
 
 
+CREATE TABLE DISCUSS.ARGUMENTS
+(
+    id             INT           NOT NULL,
+    sijl_id        INT           NOT NULL,
+    in_response    INT           NULL,
+    argument       NVARCHAR(MAX) NOT NULL,
+    argument_start SMALLINT      NULL, -- argument start point [0-index] for responses
+    argument_end   SMALLINT      NULL, -- argument end point [0-index] for responses
+    CONSTRAINT [PK_DISCUSS_ArgumentID] PRIMARY KEY CLUSTERED (id ASC),
+    FOREIGN KEY (in_response) REFERENCES DISCUSS.ARGUMENTS (id),
+    FOREIGN KEY (sijl_id) REFERENCES SIJL.USERS (id),
+    CONSTRAINT [CHECK1] CHECK
+        (
+            (argument_end IS NOT NULL
+                AND argument_start IS NOT NULL
+                AND in_response IS NOT NULL
+                AND argument_end > 0
+                )
+            OR
+            (argument_start IS NULL
+                AND argument_end IS NULL
+                AND in_response IS NULL)
+        )
+)
+
+
+CREATE TABLE DISCUSS.TAGS
+(
+    id       INT NOT NULL,
+    tag_name NVARCHAR(200) UNIQUE, -- TODO Constraint in the backend side
+    CONSTRAINT [PK_DISCUSS_TagsID] PRIMARY KEY CLUSTERED (id ASC),
+)
+
+
+CREATE TABLE DISCUSS.ARGUMENTS_TAGS
+(
+
+    id          INT NOT NULL,
+    argument_id INT NOT NULL,
+    tag_id      INT NOT NULL,
+    UNIQUE (argument_id, tag_id),
+    CONSTRAINT [PK_DISCUSS_ArgumentTagsID] PRIMARY KEY CLUSTERED (id ASC),
+    FOREIGN KEY (argument_id) REFERENCES DISCUSS.ARGUMENTS (id),
+    FOREIGN KEY (tag_id) REFERENCES DISCUSS.TAGS (id),
+)
+
+
+CREATE TABLE DISCUSS.VOTES
+(
+    id          INT NOT NULL,
+    sijl_id     INT NOT NULL,
+    argument_id INT NOT NULL,
+    UNIQUE (sijl_id, argument_id),
+    CONSTRAINT [PK_DISCUSS_Vote_ID] PRIMARY KEY CLUSTERED (id ASC),
+    FOREIGN KEY (argument_id) REFERENCES DISCUSS.ARGUMENTS (id),
+    FOREIGN KEY (sijl_id) REFERENCES SIJL.USERS (id),
+)
+
+
+
+-- CREATE TABLE DISCUSS.VOTES (
+--   argument_id int NOT NULL,
+--   CONSTRAINT []
+
+-- )
+
+
 -- SELECT
 --   first_name,
 --   last_name,
@@ -81,5 +148,5 @@ ALTER TABLE SIJL.USERS
 --   SOMEONE.username = 'saleh'
 
 
-  -- INSERT INTO SIJL.USERS(hash, first_name, last_name, email,username,age) VALUES (HashBytes('SHA2_512', "Test" ), "Test" , "Test" , "Test" , "Test" , 31 )
-  -- stmt, err := s.DB.Prepare(``)
+-- INSERT INTO SIJL.USERS(hash, first_name, last_name, email,username,age) VALUES (HashBytes('SHA2_512', "Test" ), "Test" , "Test" , "Test" , "Test" , 31 )
+-- stmt, err := s.DB.Prepare(``)
