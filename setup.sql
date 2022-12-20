@@ -54,12 +54,12 @@ ALTER TABLE SIJL.USERS
 
 CREATE TABLE DISCUSS.ARGUMENTS
 (
-    id             INT           NOT NULL,
-    sijl_id        INT           NOT NULL,
-    in_response    INT           NULL,
-    argument       NVARCHAR(MAX) NOT NULL,
-    argument_start SMALLINT      NULL, -- argument start point [0-index] for responses
-    argument_end   SMALLINT      NULL, -- argument end point [0-index] for responses
+    id             INT IDENTITY (1, 1) NOT NULL,
+    sijl_id        INT                 NOT NULL,
+    in_response    INT                 NULL,
+    argument       NVARCHAR(MAX)       NOT NULL,
+    argument_start SMALLINT            NULL, -- argument start point [0-index] for responses
+    argument_end   SMALLINT            NULL, -- argument end point [0-index] for responses
     CONSTRAINT [PK_DISCUSS_ArgumentID] PRIMARY KEY CLUSTERED (id ASC),
     FOREIGN KEY (in_response) REFERENCES DISCUSS.ARGUMENTS (id),
     FOREIGN KEY (sijl_id) REFERENCES SIJL.USERS (id),
@@ -80,7 +80,7 @@ CREATE TABLE DISCUSS.ARGUMENTS
 
 CREATE TABLE DISCUSS.TAGS
 (
-    id       INT NOT NULL,
+    id       INT IDENTITY (1, 1) NOT NULL,
     tag_name NVARCHAR(200) UNIQUE, -- TODO Constraint in the backend side
     CONSTRAINT [PK_DISCUSS_TagsID] PRIMARY KEY CLUSTERED (id ASC),
 )
@@ -89,9 +89,9 @@ CREATE TABLE DISCUSS.TAGS
 CREATE TABLE DISCUSS.ARGUMENTS_TAGS
 (
 
-    id          INT NOT NULL,
-    argument_id INT NOT NULL,
-    tag_id      INT NOT NULL,
+    id          INT IDENTITY (1, 1) NOT NULL,
+    argument_id INT                 NOT NULL,
+    tag_id      INT                 NOT NULL,
     UNIQUE (argument_id, tag_id),
     CONSTRAINT [PK_DISCUSS_ArgumentTagsID] PRIMARY KEY CLUSTERED (id ASC),
     FOREIGN KEY (argument_id) REFERENCES DISCUSS.ARGUMENTS (id),
@@ -101,9 +101,9 @@ CREATE TABLE DISCUSS.ARGUMENTS_TAGS
 
 CREATE TABLE DISCUSS.VOTES
 (
-    id          INT NOT NULL,
-    sijl_id     INT NOT NULL,
-    argument_id INT NOT NULL,
+    id          INT IDENTITY (1, 1) NOT NULL,
+    sijl_id     INT                 NOT NULL,
+    argument_id INT                 NOT NULL,
     UNIQUE (sijl_id, argument_id),
     CONSTRAINT [PK_DISCUSS_Vote_ID] PRIMARY KEY CLUSTERED (id ASC),
     FOREIGN KEY (argument_id) REFERENCES DISCUSS.ARGUMENTS (id),
