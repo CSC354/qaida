@@ -47,6 +47,8 @@ ALTER TABLE SIJL.USERS
 ALTER TABLE SIJL.USERS
     ADD date_joined DATE NOT NULL DEFAULT '2022-12-13';
 
+-- TODO auto-generate
+
 -- TODO Implement avatars
 -- ALTER TABLE SIJL.USERS
 --     ADD avatar VARCHAR(10) NOT NULL DEFAULT 'empty';
