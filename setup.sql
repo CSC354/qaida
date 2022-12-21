@@ -57,7 +57,7 @@ CREATE TABLE DISCUSS.ARGUMENTS
     id             INT IDENTITY (1, 1) NOT NULL,
     sijl_id        INT                 NOT NULL,
     in_response    INT                 NULL,
-    argument       NVARCHAR(MAX)       NOT NULL,
+    argument       NVARCHAR(MAX)       NOT NULL, -- TODO constraint size in the backend
     argument_start SMALLINT            NULL, -- argument start point [0-index] for responses
     argument_end   SMALLINT            NULL, -- argument end point [0-index] for responses
     CONSTRAINT [PK_DISCUSS_ArgumentID] PRIMARY KEY CLUSTERED (id ASC),
