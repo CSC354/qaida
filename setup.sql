@@ -54,6 +54,7 @@ CREATE TABLE DISCUSS.ARGUMENTS
     sijl_id        INT                 NOT NULL,
     in_response    INT                 NULL,
     argument       NVARCHAR(MAX)       NOT NULL, -- TODO constraint size in the backend
+    title          NVARCHAR(200)       NULL,
     argument_start SMALLINT            NULL,     -- argument start point [0-index] for responses
     argument_end   SMALLINT            NULL,     -- argument end point [0-index] for responses
     CONSTRAINT [PK_DISCUSS_ArgumentID] PRIMARY KEY CLUSTERED (id ASC),
@@ -207,3 +208,14 @@ CREATE TABLE DISCUSS.VOTES
 -- INSERT INTO DISCUSS.TAGS(tag_name) VALUES (@tag)
 
 -- SELECT sjl.id FROM SIJL.USERS sjl WHERE sjl.username = @username
+
+
+SELECT id
+FROM DISCUSS.TAGS
+
+
+
+
+
+
+SELECT * from DISCUSS.TAGS
