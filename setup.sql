@@ -226,17 +226,17 @@ CREATE TABLE DISCUSS.VOTES
 -- SELECT * from DISCUSS.TAGS
 -- 
 
-SELECT
-    first_name,
-    last_name,
-    username,
-    github,
-    home,
-    about,
-    twitter,
-    date_joined,
-    age
-FROM
-    SIJL.USERS
-WHERE
-        id = 1
+-- SELECT
+--     first_name,
+--     last_name,
+--     username,
+--     github,
+--     home,
+--     about,
+--     twitter,
+--     date_joined,
+--     age
+-- FROM
+--     SIJL.USERS
+-- WHERE
+--         id = 1
