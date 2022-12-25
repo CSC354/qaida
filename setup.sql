@@ -215,12 +215,28 @@ CREATE TABLE DISCUSS.VOTES
 -- SELECT sjl.id FROM SIJL.USERS sjl WHERE sjl.username = @username
 
 
-SELECT id
-FROM DISCUSS.TAGS
+-- SELECT id
+-- FROM DISCUSS.TAGS
+-- 
+-- 
+-- 
+-- 
+-- 
+-- 
+-- SELECT * from DISCUSS.TAGS
+-- 
 
-
-
-
-
-
-SELECT * from DISCUSS.TAGS
+SELECT
+    first_name,
+    last_name,
+    username,
+    github,
+    home,
+    about,
+    twitter,
+    date_joined,
+    age
+FROM
+    SIJL.USERS
+WHERE
+        id = 1
